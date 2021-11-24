@@ -1,13 +1,13 @@
 #include "./inc/bill_operations.h"
 
 /*Function to generate Bill Header */
-void generateBillHeader(char name[100], time_t date);
+void generate_bill_header(char name[100], time_t date);
 
 /*Function to generate Bill Body */
-void generateBillBody( items item);
+void generate_bill_body( items item);
 
 /*Function to generate Bill Footer */
-void generateBillFooter(float total);
+void generate_bill_footer(float total);
 
 /* Start of Application */
 int main(){
@@ -52,18 +52,18 @@ int main(){
 			fgets(order.itm[i].item,20,stdin);
 			order.itm[i].item[strlen(order.itm[i].item)-1] = 0;
 			printf("Please Enter the Quantity:\t\t");
-			scanf("%d",&order.itm[i].qty);
+			scanf("%f",&order.itm[i].qty);
 			printf("Please enter the unit price:\t\t");
 			scanf("%f",&order.itm[i].price);
-			total+= total_bill(order,i);
+			total+= total_bill(order.itm[i].qty, order.itm[i].price);
 
 			
 		}
-		generateBillHeader(order.customer,date);
+		generate_bill_header(order.customer,date);
 		for(int i=0;i<order.numOfitems;i++){
-			generateBillBody(order.itm[i]);
+			generate_bill_body(order.itm[i]);
 		}
-		generateBillFooter(total);
+		generate_bill_footer(total);
 		printf("\n Do you want to save invoice [y/n]:\t");
 		scanf("%s",&saveBill);
 
@@ -82,19 +82,25 @@ int main(){
 		case 2:
 		system("clear");
 		fp = fopen("BillInvoice.txt","r");
-		if(fp)
+		if(fp){
+
+		
 		printf("\n ****** Your Previous Invoices ********\n");
 		while (fread(&order_to_show,sizeof(orders),1,fp))
 		{
 			float total_to_show = 0;
-			generateBillHeader(order_to_show.customer, date);
+			generate_bill_header(order_to_show.customer, date);
 			for(int i = 0; i<order_to_show.numOfitems;i++){
-				generateBillBody(order_to_show.itm[i]);
+				generate_bill_body(order_to_show.itm[i]);
 				total_to_show+= order_to_show.itm[i].qty * order_to_show.itm[i].price;
 			}
-			generateBillFooter(total_to_show);	
+			generate_bill_footer(total_to_show);	
 		
 		}		fclose(fp);
+		}
+		else{
+			printf("\n************* Sorry no Saved Invoices**************\n");
+		}
 		break;
 
 		case 3:
@@ -109,12 +115,12 @@ int main(){
 			
 			float total_to_show = 0;
 			if(!strcmp(order_to_show.customer,name)){
-				generateBillHeader(order_to_show.customer, date);
+				generate_bill_header(order_to_show.customer, date);
 				for(int i = 0; i<order_to_show.numOfitems;i++){
-				generateBillBody(order_to_show.itm[i]);
+				generate_bill_body(order_to_show.itm[i]);
 				total_to_show+= order_to_show.itm[i].qty * order_to_show.itm[i].price;
 			}
-			generateBillFooter(total_to_show);	
+			generate_bill_footer(total_to_show);	
 			invoiceFound = 1;
 		
 		}	
@@ -140,7 +146,7 @@ int main(){
 	printf("\n\t\t Bye bye \n\n");
 	return 0;
 }
-void generateBillHeader(char name[100], time_t date){
+void generate_bill_header(char name[100], time_t date){
 	printf("\n\n" );
 	printf("\t  GENERAL STORE");
 	printf("\n\t ================");
@@ -154,15 +160,15 @@ void generateBillHeader(char name[100], time_t date){
 	printf("\n=============================");
 	printf("\n\n");
 }
-void generateBillBody(items item){
+void generate_bill_body(items item){
 	printf("%s\t\t",item.item);
-	printf("%d\t\t", item.qty);
+	printf("%.2f\t\t", item.qty);
 	printf("%.2f\t\t", item.qty * item.price);
 	printf("\n");
 }
 
 
-void generateBillFooter(float total){
+void generate_bill_footer(float total){
 	printf("\n");
 	
 	float netTotal = net_total(total);
