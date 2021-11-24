@@ -1,21 +1,34 @@
-# design
+# Design
 
-## Behaviour Diagram
 ---
-## Activity diagram
-![Flow1_diagram](https://user-images.githubusercontent.com/94213473/142763279-98d004d1-353b-4237-b717-60452f5326ff.png)
-
-## Communication Diagram
----
-![Communicationdia#](https://user-images.githubusercontent.com/94213473/143072032-59519416-fe4c-4783-9c48-d87f08569268.png)
-
 
 ## Structure Diagram
+
+### 1. Component Diagram
+
 ---
 
-## Component diagram
-![Flow2_diagram](https://user-images.githubusercontent.com/94213473/142763380-4b02272a-3cbf-4232-b428-fad1249862dd.png)
+![Component1_diagram1](https://user-images.githubusercontent.com/94213473/143199978-9220733a-890e-4d19-bcda-48e9ee6b0699.png)
 
-## Class Diagram
+
+### 2. Class Diagram
+
 ---
-![Class_diagram@](https://user-images.githubusercontent.com/94213473/143072487-8e835369-994d-46be-a259-09e5355e3e7f.png)
+
+![Class_diagram@](https://user-images.githubusercontent.com/94213473/143200066-cbb1afcb-2339-4471-baff-bd33d7158d92.png)
+
+
+## Behaviour Diagram
+
+### 1. Activity Daigram
+
+---
+
+![Activity1_diagram1](https://user-images.githubusercontent.com/94213473/143200315-d92d3b85-a3be-4b08-ae40-5735f63168d6.png)
+
+
+### 2. Communication Diagram
+
+---
+
+![Communicationdia#](https://user-images.githubusercontent.com/94213473/143200393-0f3734f2-f8ee-4a3a-832f-a283cb42ad51.png)
