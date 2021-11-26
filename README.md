@@ -6,3 +6,5 @@
 https://api.codiga.io/project/30088/score/svg
 
 https://api.codiga.io/project/30088/status/svg
+
+[![CI](https://github.com/Anil314/m1_Invoicing_customer-Billing/actions/workflows/main.yml/badge.svg)](https://github.com/Anil314/m1_Invoicing_customer-Billing/actions/workflows/main.yml)
